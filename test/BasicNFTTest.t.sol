@@ -24,20 +24,14 @@ contract BasicNFTTest is Test {
         string memory expectedName = "Dogie";
         string memory actualName = basicNFT.name();
         // Compare strings by hashing them (can't use == on strings)
-        assertEq(
-            keccak256(abi.encodePacked(expectedName)),
-            keccak256(abi.encodePacked(actualName))
-        );
+        assertEq(keccak256(abi.encodePacked(expectedName)), keccak256(abi.encodePacked(actualName)));
     }
 
     // Test 2: Verify NFT symbol is correct
     function testSymbolIsCorrect() public view {
         string memory expectedSymbol = "DOG";
         string memory actualSymbol = basicNFT.symbol();
-        assertEq(
-            keccak256(abi.encodePacked(expectedSymbol)),
-            keccak256(abi.encodePacked(actualSymbol))
-        );
+        assertEq(keccak256(abi.encodePacked(expectedSymbol)), keccak256(abi.encodePacked(actualSymbol)));
     }
 
     // Test 3: User can mint NFT and balance increases
@@ -46,10 +40,7 @@ contract BasicNFTTest is Test {
         basicNFT.mintNFT(PUG_URI);
 
         assertEq(basicNFT.balanceOf(USER), 1);
-        assertEq(
-            keccak256(abi.encodePacked(PUG_URI)),
-            keccak256(abi.encodePacked(basicNFT.tokenURI(0)))
-        ); // First token ID is 0
+        assertEq(keccak256(abi.encodePacked(PUG_URI)), keccak256(abi.encodePacked(basicNFT.tokenURI(0)))); // First token ID is 0
     }
 
     // Test 4: Token URI is stored correctly
@@ -58,10 +49,7 @@ contract BasicNFTTest is Test {
         basicNFT.mintNFT(PUG_URI);
 
         string memory actualUri = basicNFT.tokenURI(0);
-        assertEq(
-            keccak256(abi.encodePacked(PUG_URI)),
-            keccak256(abi.encodePacked(actualUri))
-        );
+        assertEq(keccak256(abi.encodePacked(PUG_URI)), keccak256(abi.encodePacked(actualUri)));
     }
 
     // Test 5: Token counter increments after each mint
@@ -113,13 +101,7 @@ contract BasicNFTTest is Test {
         basicNFT.mintNFT(uri2);
         vm.stopPrank();
 
-        assertEq(
-            keccak256(abi.encodePacked(basicNFT.tokenURI(0))),
-            keccak256(abi.encodePacked(uri1))
-        );
-        assertEq(
-            keccak256(abi.encodePacked(basicNFT.tokenURI(1))),
-            keccak256(abi.encodePacked(uri2))
-        );
+        assertEq(keccak256(abi.encodePacked(basicNFT.tokenURI(0))), keccak256(abi.encodePacked(uri1)));
+        assertEq(keccak256(abi.encodePacked(basicNFT.tokenURI(1))), keccak256(abi.encodePacked(uri2)));
     }
 }
