@@ -19,7 +19,7 @@ install :; forge install cyfrin/foundry-devops@0.2.2 --no-commit && forge instal
 # Update Dependencies
 update:; forge update
 
-build:; forge build
+build:; forge build && forge fmt
 
 test :; forge test 
 
