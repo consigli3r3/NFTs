@@ -15,6 +15,11 @@ contract MoodNFTTest is Test {
     function setUp() public {
         DeployMoodNFT deployer = new DeployMoodNFT();
         moodNFT = deployer.run();
+
+        console.log("USER address:", USER);
+        console.logBytes(address(USER).code);
+
+        vm.etch(USER, new bytes(0)); // Ensure USER has no code so it doesnt match an existing contract on Sepolia
     }
 
     function testViewTokenURIHappy() public {
